@@ -10,3 +10,10 @@
 * Seamless Kafka Broadcasting: Events are reliably broadcasted to Kafka, supporting distributed logging and enabling subsequent processing or analytics across decentralized systems.
 * Dockerized Deployment: The application and its Kafka infrastructure are containerized with Docker, simplifying setup and ensuring consistent environments across development, testing, and production.
 * Kafka UI Integration: Incorporates Kafka UI, providing a user-friendly interface for real-time monitoring of Kafka topics, messages, and system health. This enhances operational visibility and aids in the quick diagnosis of issues.
+
+## Sources
+
+[Phoenix Gitbook](https://ellipsis-labs.gitbook.io/phoenix-dex/tRIkEFlLUzWK9uKO3W2V/getting-started/phoenix-overview)
+
+[Phoenix Github](https://github.com/Ellipsis-Labs/phoenix-v1)
+
