@@ -2,6 +2,10 @@ use serde::{Deserialize, Serialize};
 use tokio_stream::StreamExt;
 
 mod event;
+mod kafka;
+
+const ORDER_PLACED_EVENT: &str = "order_placed";
+const BROKER: &str = "localhost:9092";
 
 #[derive(Debug, Serialize, Deserialize)]
 struct NewOrderPlaced {
@@ -16,6 +20,11 @@ async fn main() -> anyhow::Result<()> {
 
     while let Some(event) = event_stream.next().await {
         println!("Received a Place event: {:?}\n", event);
+        println!("Sending to Kafka...\n");
+
+        let message = serde_json::to_string(&event)?;
+
+        crate::kafka::produce_message(BROKER, ORDER_PLACED_EVENT, &message).await;
     }
 
     Ok(())

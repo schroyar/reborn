@@ -1,11 +1,11 @@
 use phoenix_sdk::sdk_client::{MarketEventDetails, PhoenixEvent, SDKClient};
+use serde::{Deserialize, Serialize};
 use solana_client::nonblocking::rpc_client::RpcClient;
 use solana_client::rpc_client::GetConfirmedSignaturesForAddress2Config;
+use solana_sdk::signature::Signature;
 use solana_sdk::{commitment_config::CommitmentConfig, pubkey::Pubkey, signature::Keypair};
 use std::str::FromStr;
 use std::sync::Arc;
-use serde::{Deserialize, Serialize};
-use solana_sdk::signature::Signature;
 use tokio::sync::mpsc;
 use tokio_stream::Stream;
 
@@ -103,9 +103,7 @@ impl EventFetcher {
                                         eprintln!("Error sending event through channel: {:?}", e);
                                     }
                                 }
-                                _ => {
-                                    
-                                }
+                                _ => {}
                             }
                         }
                     }
