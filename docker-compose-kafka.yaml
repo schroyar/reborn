@@ -17,6 +17,7 @@ services:
       KAFKA_HEAP_OPTS: "-Xms1G -Xms1G"
       KAFKA_MESSAGE_MAX_BYTES: 1195725856
       KAFKA_SOCKET_REQUEST_MAX_BYTES: 1195725856
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
   kafka-ui: 
     image: provectuslabs/kafka-ui
     container_name: kafka-ui
