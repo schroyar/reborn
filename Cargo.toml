@@ -1,0 +1,17 @@
+[package]
+name = "ell"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.80"
+ellipsis-client = "0.2.1"
+phoenix-sdk = "0.5.1"
+serde = "1.0.197"
+serde_json = "1.0.114"
+solana-client = "1.14.9"
+solana-sdk = "1.14.9"
+tokio = { version = "1.29.1", features = ["full"] }
+
