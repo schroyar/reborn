@@ -35,8 +35,6 @@ async fn main() -> anyhow::Result<()> {
 
     let mut until = None;
 
-    let mut vec_events: Vec<String> = vec![];
-
     loop {
         dbg!("a");
         let config = match until {
@@ -75,14 +73,13 @@ async fn main() -> anyhow::Result<()> {
 
         for handle in handles {
             let events = handle.await?;
-            events.map(|events| {
-                events.iter().for_each(|e| {
-                    let ev: PhoenixEvent = e.clone();
+            if let Some(events) = events { events.iter().for_each(|e| {
+                    let ev: PhoenixEvent = *e;
                     let market_details = ev.details;
 
                     match market_details {
                         MarketEventDetails::Place(e2) => {
-                            let basic_place = NewOrderPlaced {
+                            let _basic_place = NewOrderPlaced {
                                 price_in_ticks: e2.price_in_ticks,
                                 base_lots_placed: e2.base_lots_placed,
                             };
@@ -90,8 +87,7 @@ async fn main() -> anyhow::Result<()> {
                         }
                         _ => {}
                     }
-                });
-            });
+                }); }
         }
 
         // Note: this is a basic polling loop, if there are >1000 signatures in 200ms
